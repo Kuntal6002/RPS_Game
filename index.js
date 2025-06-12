@@ -1,3 +1,9 @@
+const Rock = document.querySelector('.btn1');
+Rock.onclick = ()=>getHumanChoice("Rock");
+const Paper = document.querySelector('.btn2');
+Paper.onclick = ()=>getHumanChoice("Paper");
+const Scissor = document.querySelector(".btn3");
+Scissor.onclick = ()=>getHumanChoice("Scissor");
 
 function getComputerChoice(){
     const choices = ["Rock","Paper","Scissor"];
@@ -6,13 +12,14 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
-    let humanChoice = prompt("Enter Your Choice");
+function getHumanChoice(input){
+    let humanChoice = input;
     return humanChoice;
 }
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;    
+
     function playRound(humanChoice,computerChoice){
         let human = humanChoice.toLowerCase();
         let computer = computerChoice.toLowerCase();
@@ -27,11 +34,11 @@ function playGame(){
             computerScore++;
         }
     }
-    for(let i=0;i<5;i++){
+    
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
-    }
+    
 }
 
 playGame();
