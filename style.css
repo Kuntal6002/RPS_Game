@@ -35,5 +35,8 @@ h1{
     background-color: #dada6a;
 }
 .result{
+    margin-top:15px;
     text-align: center;
+    font-family: Poppins,'Helvetica';
+    font-weight: normal;
 }

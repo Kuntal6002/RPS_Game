@@ -1,9 +1,4 @@
-const Rock = document.querySelector('.btn1');
-Rock.onclick = ()=>getHumanChoice("Rock");
-const Paper = document.querySelector('.btn2');
-Paper.onclick = ()=>getHumanChoice("Paper");
-const Scissor = document.querySelector(".btn3");
-Scissor.onclick = ()=>getHumanChoice("Scissor");
+
 
 function getComputerChoice(){
     const choices = ["Rock","Paper","Scissor"];
@@ -18,26 +13,42 @@ function getHumanChoice(input){
 }
 function playGame(){
     let humanScore = 0;
-    let computerScore = 0;    
+    let computerScore = 0;  
+    const Rock = document.querySelector('.btn1');
+    Rock.onclick = ()=>handleClick("Rock");
+
+    const Paper = document.querySelector('.btn2');
+    Paper.onclick = ()=>handleClick("Paper");
+
+    const Scissor = document.querySelector(".btn3");
+    Scissor.onclick = ()=>handleClick("Scissor");
+
+    const result = document.querySelector(".result");  
 
     function playRound(humanChoice,computerChoice){
         let human = humanChoice.toLowerCase();
         let computer = computerChoice.toLowerCase();
         if (human===computer){
-            console.log("Draw");
+            result.textContent = "Draw";
         }
         else if((human=== "rock" && computer === "scissor")||(human=== "scissor" && computer === "paper")||(human==="paper" && computer==="rock") ){
-            console.log("Human Wins");
+            result.textContent = "Human Wins";
             humanScore++;
         }else{
-            console.log("Computer Wins");
+            result.textContent = "Computer Wins";
             computerScore++;
         }
+        let p = document.createElement("p");
+        p.textContent = (`Score - You: ${humanScore} | Computer: ${computerScore}`);
+
+        result.appendChild(p);
     }
-    
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
+        function handleClick(choice){
+            const humanSelection = getHumanChoice(choice);
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+        }
+
     
 }
 
